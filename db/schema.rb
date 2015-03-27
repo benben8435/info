@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326193603) do
+ActiveRecord::Schema.define(version: 20150327041318) do
+
+  create_table "dinnings", force: true do |t|
+    t.decimal  "quantity",   precision: 8, scale: 2
+    t.decimal  "price",      precision: 8, scale: 2
+    t.decimal  "rate",       precision: 8, scale: 2
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dinnings", ["user_id"], name: "index_dinnings_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,6 +40,9 @@ ActiveRecord::Schema.define(version: 20150326193603) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "cellphone"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

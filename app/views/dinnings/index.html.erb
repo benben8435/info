@@ -1,0 +1,33 @@
+<h1>Listing dinnings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Rate</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dinnings.each do |dinning| %>
+      <tr>
+        <td><%= number_to_currency dinning.quantity %></td>
+        <td><%= number_to_currency dinning.price %></td>
+        <td><%= sprintf("%0.02f", dinning.rate) %></td>
+        <td><%= dinning.user.name %></td>
+        <td><%= link_to 'Show', dinning %></td>
+        <td><%= link_to 'Edit', edit_dinning_path(dinning) %></td>
+        <td><%= link_to 'Destroy', dinning, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dinning', new_dinning_path %>

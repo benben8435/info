@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= number_to_currency @dinning.quantity %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency @dinning.price %>
+</p>
+
+<p>
+  <strong>Rate:</strong>
+  <%= sprintf("%0.02f", @dinning.rate) %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @dinning.user.name %>
+</p>
+
+<%= link_to 'Edit', edit_dinning_path(@dinning) %> |
+<%= link_to 'Back', dinnings_path %>

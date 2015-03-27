@@ -1,5 +1,5 @@
 <h2>Sign up</h2>
-
+<%= alert %>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -20,7 +20,16 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %><br />
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :cellphone %><br />
+    <%= f.phone_field :cellphone %>
+  </div>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
