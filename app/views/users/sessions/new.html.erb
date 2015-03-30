@@ -1,26 +1,47 @@
-<h2>Log in</h2>
-<%= alert %>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<div class="page-header">
+  <center><h1>Log in</h1></center>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="row top30"></div>
+    <%= render "partial/notice" %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+    <div class="form-horizontal">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <%= f.email_field :email, autofocus: true, class: "form-control"%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, class: "col-sm-3 control-label" %>
+        <div class="col-sm-9">
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <%= f.check_box :remember_me %>
+            <%= f.label 'remember me' %>
+          </div>
+        </div>
+      <% end -%>
+
+      <div class="form-group">
+          <%= link_to ' Back ', :back, class: "btn btn-default pull-right"%>
+          <%= f.submit " Sign in ", class: "btn btn-primary pull-right" %>
+
+      </div>
+    <% end %>
     </div>
-  <% end -%>
+    <br/>
+    <%= render "users/shared/links" %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

@@ -1,2 +1,27 @@
-Welcome!
-<%= link_to 'Dinning Dollar', dinnings_path %>
+<style>
+.glyphicon.glyphicon-usd {
+    font-size: 75px;
+}
+.square {
+  border-radius: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+</style>
+<div style="margin-left: 20%; margin-right: 20%;">
+<div class="page-header">
+  <center><h1>Welcome!</h1></center>
+  <br>
+</div>
+    <br>
+   <div style="margin-left: 15%; margin-right: 15%">
+    <%= link_to dinnings_path do %>
+    <button class="btn btn-default square">
+      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+      <br>Dinning<br>Dollar
+    </button>
+    <% end %>
+  </div>

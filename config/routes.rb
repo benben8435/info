@@ -1,4 +1,5 @@
 Info::Application.routes.draw do
+  get "user/show"
   resources :dinnings
 
   devise_for :users

@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 1.2'
 #--------------------- CUSTOM PLUGINS -----------------------
 gem 'devise'
 gem 'mailcatcher'
+gem 'bootstrap-sass'
+
 #------------------------------------------------------------
 
 group :doc do

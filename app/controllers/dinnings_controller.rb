@@ -1,6 +1,7 @@
 class DinningsController < ApplicationController
   before_action :set_dinning, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize, only: [:edit, :destroy]
   respond_to :html
 
   def index
@@ -39,6 +40,11 @@ class DinningsController < ApplicationController
   end
 
   private
+    def authorize
+      unless @dinning.user == current_user
+        redirect_to :back
+      end
+    end
     def set_dinning
       @dinning = Dinning.find(params[:id])
     end

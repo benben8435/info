@@ -1,19 +1,25 @@
-<h1>Listing dinnings</h1>
+<div style="margin-left: 10%; margin-right: 10%">
+<div class="page-header">
+  <center><h1>Dinning Trade Infos</h1></center>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Rate</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
+<div class="text-right" >
+  <%= link_to 'Post New Dinning Trade', new_dinning_path, class: "btn btn-primary" %>
+</div>
+<br />
+<table class="table table-striped text-center">
+  <thead > 
+    <tr >
+      <th class="text-center">Quantity</th>
+      <th class="text-center">Price</th>
+      <th class="text-center">Rate</th>
+      <th class="text-center">Poster</th>
+      <th class="text-center"></th>
+
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="top30">
     <% @dinnings.each do |dinning| %>
       <tr>
         <td><%= number_to_currency dinning.quantity %></td>
@@ -21,13 +27,9 @@
         <td><%= sprintf("%0.02f", dinning.rate) %></td>
         <td><%= dinning.user.name %></td>
         <td><%= link_to 'Show', dinning %></td>
-        <td><%= link_to 'Edit', edit_dinning_path(dinning) %></td>
-        <td><%= link_to 'Destroy', dinning, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
-
-<%= link_to 'New Dinning', new_dinning_path %>

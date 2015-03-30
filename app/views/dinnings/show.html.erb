@@ -1,24 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div style="margin-left: 30%; margin-right: 30%">
+<div class="page-header">
+  <center><h2>Dinning Trade Info</h2></center>
+</div>
 
-<p>
-  <strong>Quantity:</strong>
-  <%= number_to_currency @dinning.quantity %>
-</p>
+<table class="table table-striped text-center">
+    <tr>
+      <td><strong>Quantity</strong></td>
+      <td><%= number_to_currency @dinning.quantity %></td>
+    </tr>
+    <tr>
+      <td><strong>Price</strong></td>
+      <td><%= number_to_currency @dinning.price %></td>
+    </tr>
+    <tr>
+      <td><strong>Rate</strong></td>
+      <td><%= sprintf("%0.02f", @dinning.rate) %></td>
+    </tr>
+    <tr>
+      <td><strong>User</strong></td>
+      <td><%= @dinning.user.name %></td>
+    </tr>
+    <tr>
+      <td><strong>Email</strong></td>
+      <td><%= @dinning.user.email %></td>
+    </tr>
+    <tr>
+      <td><strong>Tel</strong></td>
+      <td><% if @dinning.user.cellphone == nil %>N/A<% end %>
+        <%= @dinning.user.cellphone %></td>
+    </tr>
+</table>
+<br>
+<div>
+  <%= link_to 'Back', dinnings_path, class: "btn btn-default text-left" %>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency @dinning.price %>
-</p>
-
-<p>
-  <strong>Rate:</strong>
-  <%= sprintf("%0.02f", @dinning.rate) %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @dinning.user.name %>
-</p>
-
-<%= link_to 'Edit', edit_dinning_path(@dinning) %> |
-<%= link_to 'Back', dinnings_path %>
+  <% if current_user == @dinning.user %>
+    <%= link_to 'Delete', @rent, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger pull-right" %>
+    <%= link_to 'Edit', edit_dinning_path(@dinning), class: "btn btn-primary pull-right" %>
+  <% end %> 
+  
+</div>
+</div>

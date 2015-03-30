@@ -1,0 +1,49 @@
+<div class="page-header">
+  <center><h1>Personal Profile</h1></center>
+</div><br/>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+<p><b>Email：</b>
+<%= @this_user.email %></p>
+<p><b>Name：</b>
+  <%= @this_user.name %></p>
+<p><b>My Trade Info：</b><br><br>
+<% if @this_user.dinning.count != 0 %>
+  <table class="table table-striped text-center">
+    <tr>
+      <th class="text-center">Quantity</th>
+      <th class="text-center">Price</th>
+      <th class="text-center">Rate</th>
+    </tr>
+    <% @this_user.dinning.each do |dinning| %>
+    <tr>
+      <td><%= number_to_currency dinning.quantity %></td>
+      <td><%= number_to_currency dinning.price %></td>
+      <td><%= sprintf "%0.02f", dinning.rate %></td>
+      <td><%= link_to 'show', dinning %></td>
+      <% if current_user == @this_user %>
+      <td><%= link_to 'delete', dinning_path(id: dinning, from_profile: :true), method: :delete, data: { confirm: 'Are you sure' } %></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
+<% else %>
+<% if current_user == @this_user %>
+N/A，
+<%= link_to 'Post new trade Info', new_dinning_path %>
+<% else %>
+N/A，
+<% end %>
+<% end %>
+</p>
+<br/>
+<div>
+<% if current_user == @this_user %>
+<%= link_to 'Edit my profile', edit_user_registration_path, class: "btn btn-default" %>
+<% end %>
+<%= link_to 'Back', :back, class: "btn btn-default pull-right" %>
+<%= link_to 'Post new trade Info', new_dinning_path, class: "btn btn-primary pull-right" %>
+</div>
+</div>
+</div>
